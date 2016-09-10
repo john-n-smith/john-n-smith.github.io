@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>SVG Booklets</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/pure/0.6.0/pure-min.css">
+    </head>
+    <body>
+        <object id="svg" data="test.svg" type="image/svg+xml"></object>
+        <form name="updater" class="pure-form pure-form-aligned">
+            <fieldset>
+                <legend>Enter text below and hit 'update' to update the image</legend>
+                <label for="text1">text 1</label>
+                <input type="text" name="text1" value="booklets 4 lyf">
+                <label for"text2">text 2</label>
+                <input type="text" name="text2" value="hello Hope">
+                <button type="submit" class="pure-button pure-button-primary">update</button>
+            </fieldset>
+        </form>
+        <script type="text/javascript">
+            var updater = {
+                init: function () {
+                    document.forms.updater.addEventListener('submit', updater);
+                    console.log('inited');
+                },
+
+                handleEvent: function (e) {
+                    e.preventDefault();
+                    var svg = document.getElementById('svg').contentDocument;
+                    svg.getElementById('text1').textContent = e.target.text1.value;
+                    svg.getElementById('text2').textContent = e.target.text2.value;
+                }
+            };
+
+            updater.init();
+        </script>
+    <body>
+<html>
